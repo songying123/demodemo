@@ -1,35 +1,32 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	</head>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.common.js"></script>
 	<body>
 		<div id = "box">
-			<p v-html = "msg"></p>
-			<textarea v-model="msg" maxlength="20"></textarea>	
-			<span v-if="msg.length>0">还可以输入{{20-msg.length}}个字</span>
-			
-			<input type="text" v-model.number.lazy = "a" />
-			<input type="text" v-model.number.lazy = "b" /> {{a+b}}
-			<input type="text" v-model="c"/>
-			<input type="text" v-model.trim="d"/> {{c+d}}
-		
+			<input type="range" min = "0" max = "255" v-model="r" />
+			<input type="range" min = "0" max = "255" v-model="g" />			
+			<input type="range" min = "0" max = "255" v-model="b" />
+			<input type="number" v-model="w" />
+			<input type="number" v-model="h" />
+			<div v-bind:style="{'width':w+'px','height':h+'px',background:'rgb('+r+','+g+','+b+')'}"></div>
 		</div>
 		<script>
-			var vm = new Vue({
+			new Vue({
 				el:"#box",
 				data:{
-					msg:"",
-					a:1,
-					b:2,
-					c:"",
-					d:""
-				},
-//				template:"<p>{{msg}}</p>"
+					r:0,
+					g:0,
+					b:0,
+					w:100,
+					h:100
+				}
 			})
-			console.log(vm);
 		</script>
 	</body>
 </html>
