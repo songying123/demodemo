@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.common.js"></script>
+	<body>
+		<div id = "box">
+			<p v-html = "msg"></p>
+			<textarea v-model="msg" maxlength="20"></textarea>	
+			<span v-if="msg.length>0">还可以输入{{20-msg.length}}个字</span>
+			
+			<input type="text" v-model.number.lazy = "a" />
+			<input type="text" v-model.number.lazy = "b" /> {{a+b}}
+			<input type="text" v-model="c"/>
+			<input type="text" v-model.trim="d"/> {{c+d}}
+		
+		</div>
+		<script>
+			var vm = new Vue({
+				el:"#box",
+				data:{
+					msg:"",
+					a:1,
+					b:2,
+					c:"",
+					d:""
+				},
+//				template:"<p>{{msg}}</p>"
+			})
+			console.log(vm);
+		</script>
+	</body>
+</html>
